@@ -1,7 +1,5 @@
 package terraform
 
-import rego.v1
-
-deny contains "Destroy runs need a change ticket" if {
+deny["Destroy runs need a change ticket"] {
 	input.tfrun.is_destroy
 }

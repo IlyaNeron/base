@@ -1,15 +1,15 @@
 package lib
 
-import rego.v1
-
-changed_resources contains resource if {
-	some resource in input.tfplan.resource_changes
+changed_resources[resource] {
+	resource := input.tfplan.resource_changes[_]
 	not no_op(resource)
 }
 
-replaced(resource) if {
-	"delete" in resource.change.actions
-	"create" in resource.change.actions
+replaced(resource) {
+	resource.change.actions[_] == "delete"
+	resource.change.actions[_] == "create"
 }
 
-no_op(resource) if resource.change.actions == ["no-op"]
+no_op(resource) {
+	resource.change.actions == ["no-op"]
+}

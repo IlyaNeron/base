@@ -2,7 +2,7 @@ version = "v1"
 
 policy "run_source" {
   enabled           = true
-  enforcement_level = "soft-mandatory"
+  enforcement_level = "advisory"
 }
 
 policy "workspace_naming" {
