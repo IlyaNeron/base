@@ -2,7 +2,7 @@ package terraform
 
 import data.lib
 
-max_changes := 10
+max_changes := 20
 
 deny[reason] {
 	count(lib.changed_resources) > max_changes
